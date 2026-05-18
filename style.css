@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#schedule-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.filter-controls label {
+    margin-right: 10px;
+}
+
+.filter-controls select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.talk, .break {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.talk h3, .break h3 {
+    margin-top: 0;
+    color: #0056b3;
+    font-size: 1.5rem;
+}
+
+.talk-time, .break-time {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.talk-speakers {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.talk-category {
+    font-size: 0.9em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.talk-description {
+    margin-top: 10px;
+}
+
+.break {
+    background-color: #e9ecef;
+    border-color: #c9d0d6;
+}
+
+.break h3 {
+    color: #343a40;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    #schedule-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-controls {
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Talks Event Schedule</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#schedule-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.filter-controls label {
+    margin-right: 10px;
+}
+
+.filter-controls select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.talk, .break {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.talk h3, .break h3 {
+    margin-top: 0;
+    color: #0056b3;
+    font-size: 1.5rem;
+}
+
+.talk-time, .break-time {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.talk-speakers {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.talk-category {
+    font-size: 0.9em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.talk-description {
+    margin-top: 10px;
+}
+
+.break {
+    background-color: #e9ecef;
+    border-color: #c9d0d6;
+}
+
+.break h3 {
+    color: #343a40;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    #schedule-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-controls {
+        margin-top: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Technical Talks Event</h1>
+        <p>A full day of insightful discussions and cutting-edge topics.</p>
+    </header>
+
+    <main>
+        <section id="schedule-header">
+            <h2>Event Schedule</h2>
+            <div class="filter-controls">
+                <label for="category-filter">Filter by Category:</label>
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="schedule-container">
+            <!-- Schedule will be dynamically loaded here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Technical Talks Event. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+const eventSchedule = [
+    {
+        type: "talk",
+        time: "10:00 AM - 11:00 AM",
+        title: "Introduction to Generative AI",
+        speakers: ["Dr. Alex W. (AI Research)", "Dr. Jordan T. (Machine Learning)"],
+        category: ["AI", "Machine Learning", "Keynote"],
+        duration: "1 hour",
+        description: "An overview of the latest advancements in generative AI, covering models like transformers, GANs, and diffusion models. Explore their applications and future potential."
+    },
+    {
+        type: "break",
+        time: "11:00 AM - 11:10 AM",
+        title: "Transition Break"
+    },
+    {
+        type: "talk",
+        time: "11:10 AM - 12:10 PM",
+        title: "Deep Learning for Natural Language Processing",
+        speakers: ["Dr. Sarah K. (NLP Expert)"],
+        category: ["NLP", "Deep Learning"],
+        duration: "1 hour",
+        description: "Dive deep into the world of NLP with a focus on neural network architectures like LSTMs, GRUs, and advanced transformer models. Learn how to build powerful language understanding systems."
+    },
+    {
+        type: "break",
+        time: "12:10 PM - 12:20 PM",
+        title: "Transition Break"
+    },
+    {
+        type: "talk",
+        time: "12:20 PM - 01:20 PM",
+        title: "Cloud-Native Development with Node.js",
+        speakers: ["Mr. Chris M. (Cloud Architect)"],
+        category: ["Cloud", "Node.js", "Backend"],
+        duration: "1 hour",
+        description: "Explore best practices for building scalable and resilient cloud-native applications using Node.js. Topics include serverless functions, containerization, and microservices."
+    },
+    {
+        type: "break",
+        time: "01:20 PM - 02:20 PM",
+        title: "Lunch Break"
+    },
+    {
+        type: "talk",
+        time: "02:20 PM - 03:20 PM",
+        title: "Frontend Frameworks: React vs. Vue",
+        speakers: ["Ms. Emily J. (Frontend Developer)"],
+        category: ["Frontend", "JavaScript", "Web Development"],
+        duration: "1 hour",
+        description: "A comparative analysis of two popular frontend frameworks, React and Vue.js. Understand their strengths, weaknesses, and ideal use cases to make informed technology choices."
+    },
+    {
+        type: "break",
+        time: "03:20 PM - 03:30 PM",
+        title: "Transition Break"
+    },
+    {
+        type: "talk",
+        time: "03:30 PM - 04:30 PM",
+        title: "Securing Your Web Applications",
+        speakers: ["Mr. David L. (Security Engineer)", "Ms. Olivia P. (DevOps)"],
+        category: ["Security", "Web Development"],
+        duration: "1 hour",
+        description: "Learn essential security practices for protecting your web applications from common vulnerabilities. Topics include authentication, authorization, data encryption, and secure coding."
+    },
+    {
+        type: "break",
+        time: "04:30 PM - 04:40 PM",
+        title: "Transition Break"
+    },
+    {
+        type: "talk",
+        time: "04:40 PM - 05:40 PM",
+        title: "The Future of Quantum Computing",
+        speakers: ["Prof. Robert H. (Quantum Physics)"],
+        category: ["Quantum Computing", "Future Tech", "Physics"],
+        duration: "1 hour",
+        description: "An exciting look into the advancements and challenges in quantum computing. Understand the fundamental principles and potential impact of this revolutionary technology."
+    }
+];
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const scheduleContainer = document.getElementById('schedule-container');
+    const categoryFilter = document.getElementById('category-filter');
+
+    // This eventSchedule will be injected by the build script
+    // const eventSchedule = [...];
+
+    function renderSchedule(scheduleData) {
+        scheduleContainer.innerHTML = ''; // Clear previous schedule
+
+        scheduleData.forEach(item => {
+            if (item.type === 'talk') {
+                const talkElement = document.createElement('div');
+                talkElement.classList.add('talk');
+                talkElement.innerHTML = `
+                    <div class="talk-time">${item.time}</div>
+                    <h3>${item.title}</h3>
+                    <div class="talk-speakers">Speakers: ${item.speakers.join(', ')}</div>
+                    <div class="talk-category">Categories: ${item.category.join(', ')}</div>
+                    <div class="talk-description">${item.description}</div>
+                `;
+                scheduleContainer.appendChild(talkElement);
+            } else if (item.type === 'break') {
+                const breakElement = document.createElement('div');
+                breakElement.classList.add('break');
+                breakElement.innerHTML = `
+                    <div class="break-time">${item.time}</div>
+                    <h3>${item.title}</h3>
+                `;
+                scheduleContainer.appendChild(breakElement);
+            }
+        });
+    }
+
+    function populateCategories() {
+        const allCategories = new Set();
+        eventSchedule.forEach(item => {
+            if (item.type === 'talk' && item.category) {
+                item.category.forEach(cat => allCategories.add(cat));
+            }
+        });
+
+        categoryFilter.innerHTML = '<option value="all">All Categories</option>'; // Reset
+        allCategories.forEach(cat => {
+            const option = document.createElement('option');
+            option.value = cat;
+            option.textContent = cat;
+            categoryFilter.appendChild(option);
+        });
+    }
+
+    function filterSchedule() {
+        const selectedCategory = categoryFilter.value;
+        if (selectedCategory === 'all') {
+            renderSchedule(eventSchedule);
+        } else {
+            const filteredData = eventSchedule.filter(item => {
+                return item.type === 'break' || (item.type === 'talk' && item.category.includes(selectedCategory));
+            });
+            renderSchedule(filteredData);
+        }
+    }
+
+    // Initial render and setup
+    if (typeof eventSchedule !== 'undefined' && eventSchedule.length > 0) {
+        populateCategories();
+        renderSchedule(eventSchedule);
+    }
+
+    categoryFilter.addEventListener('change', filterSchedule);
+});
+
+    </script>
+</body>
+</html>
